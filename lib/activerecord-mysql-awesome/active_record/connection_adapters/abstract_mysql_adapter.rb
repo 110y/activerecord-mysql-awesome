@@ -209,7 +209,8 @@ module ActiveRecord
       public
 
       def supports_datetime_with_precision?
-        (version[0] == 5 && version[1] >= 6) || version[0] >= 6
+        version_array = version.instance_variable_get(:@version)
+        (version_array[0] == 5 && version_array[1] >= 6) || version_array[0] >= 6
       end
 
       def type_to_sql(type, limit = nil, precision = nil, scale = nil, unsigned = false)

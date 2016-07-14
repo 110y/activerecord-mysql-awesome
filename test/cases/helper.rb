@@ -40,7 +40,7 @@ end
 
 def mysql_56?
   current_adapter?(:Mysql2Adapter) &&
-    ActiveRecord::Base.connection.send(:version).join(".") >= "5.6.0"
+    ActiveRecord::Base.connection.send(:version).instance_variable_get(:@version).join(".") >= "5.6.0"
 end
 
 # FIXME: we have tests that depend on run order, we should fix that and
